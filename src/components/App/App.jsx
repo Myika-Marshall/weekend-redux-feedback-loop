@@ -70,9 +70,7 @@ function App() {
             <button className="firstNext" onClick={hideTheButton}>Next</button>
           </Link>
         </p>
-        {/* <p>
-          <Link to="/">Home</Link>
-        </p> */}
+      
       </Router>
     </div>
   );
