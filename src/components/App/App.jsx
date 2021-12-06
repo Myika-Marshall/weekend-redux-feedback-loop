@@ -80,7 +80,6 @@ function App() {
             <button className="firstNext" onClick={incrementPage}>Next</button>
           </Link>
         </p>
-        
       </Router>
     </div>
   );
