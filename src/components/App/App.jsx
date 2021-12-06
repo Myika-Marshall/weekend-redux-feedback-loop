@@ -12,13 +12,14 @@ function App() {
   const dispatch = useDispatch();
   const [style, setStyle] = useState("")
 
-  const initialState = {
-    FeedbackQuestions:  [
-    { currentPage:1, text: 'How are you feeling today?'}, 
-    { currentPage:2, text: 'How well are you understanding the content?'},
-    { currentPage:3, text: 'How well are you being supported?'},
-    { currentPage:4, text: 'Any comments you want to leave?'} 
-    ]};
+
+  // const initialState = {
+  //   FeedbackQuestions:  [
+  //   { currentPage:1, question: 'How are you feeling today?', prompt: 'Feeling'}, 
+  //   { currentPage:2, question: 'How well are you understanding the content?', prompt: 'Understanding'},
+  //   { currentPage:3, question: 'How well are you being supported?', prompt: 'Supported'},
+  //   { currentPage:4, question: 'Any comments you want to leave?', prompt: 'Comments'} 
+  //   ]};
 
   useEffect(() => {
     console.log("in useEffect");
@@ -44,13 +45,13 @@ function App() {
 
 
   return (
+    currentPage = 1,
     <div className='App'>
       <header className='App-header'>
         <h1 className='App-title'>Feedback!</h1>
         <h4>Don't forget it!</h4>
       </header>
         
-        {let currentPage = 0,}
 
       <Router>
         <Route exact path="/">
