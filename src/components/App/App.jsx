@@ -4,9 +4,13 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import './App.css';
 //importing components here
+import QuestionList from "../QuestionList/QuestionList";
+import FeedbackInput from "../FeedbackInput/FeedbackInput";
+import Submit from "..Submit/Submit";
 
 function App() {
   const dispatch = useDispatch();
+  const [style, setStyle] = useState("")
 
   useEffect(() => {
     console.log("in useEffect");
