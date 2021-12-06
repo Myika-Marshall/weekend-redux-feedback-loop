@@ -12,6 +12,14 @@ function App() {
   const dispatch = useDispatch();
   const [style, setStyle] = useState("")
 
+  const initialState = {
+    FeedbackQuestions:  [
+    { currentPage:1, text: 'How are you feeling today?'}, 
+    { currentPage:2, text: 'How well are you understanding the content?'},
+    { currentPage:3, text: 'How well are you being supported?'},
+    { currentPage:4, text: 'Any comments you want to leave?'} 
+    ]};
+
   useEffect(() => {
     console.log("in useEffect");
     retrieveFeedback();
@@ -41,6 +49,8 @@ function App() {
         <h1 className='App-title'>Feedback!</h1>
         <h4>Don't forget it!</h4>
       </header>
+        
+        {let currentPage = 0,}
 
       <Router>
         <Route exact path="/">
@@ -67,12 +77,10 @@ function App() {
 
         <p className={style}>
           <Link to="/understanding">
-            <button className="firstNext" onClick={hideTheButton}>Next</button>
+            <button className="firstNext" onClick={incrementPage}>Next</button>
           </Link>
         </p>
-        {/* <p>
-          <Link to="/">Home</Link>
-        </p> */}
+        
       </Router>
     </div>
   );
