@@ -2,11 +2,11 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 //imported functions from components(route 0
 import Feeling from '../Feeling/Feeling.jsx';
-import Understanding from '../Understanding/Understanding.jsx';
-import Support from '../Support/Support.jsx';
-import Comment from '../Comment/Comment.jsx';
-import Review from '../Review/Review.jsx';
-import Submitted from '../Submitted/Submitted.jsx';
+// import Understanding from '../Understanding/Understanding.jsx';
+// import Support from '../Support/Support.jsx';
+// import Comment from '../Comment/Comment.jsx';
+// import Review from '../Review/Review.jsx';
+// import Submitted from '../Submitted/Submitted.jsx';
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
         <Route exact path="/">
           <Feeling />
         </Route>
-        <Route exact path="/understanding">
+        {/* <Route exact path="/understanding">
           <Understanding />
         </Route>
         <Route exact path="/support">
@@ -37,7 +37,7 @@ function App() {
         <Route exact path="/submitted">
           <Submitted />
         </Route>
-      </Router>
+      </Router> */}
 
     </div>
   );
