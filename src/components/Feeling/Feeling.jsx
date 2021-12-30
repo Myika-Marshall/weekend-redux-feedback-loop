@@ -4,13 +4,13 @@ import { useHistory } from 'react-router-dom';
 
 function Feeling (){
     console.log('in feeling');
-    const [feeling, setFeeling] = useState('');
+    const [feeling, setFeeling] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
 
     const handleFeeling = (event) => {
     event.preventDefault();
-    if (feeling >= 1 && feeling <= 5){
+    if (feeling < 1 || feeling <= 5){
         dispatch({
             type: 'SET_FEELING',
             payload: feeling
@@ -18,7 +18,7 @@ function Feeling (){
         history.push('/understanding');
     }
     else {
-        alert('Please enter a numbere from 1-5')
+        alert('Please enter a number from 1-5')
     }
     }
     return (

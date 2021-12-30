@@ -1,47 +1,55 @@
+import React from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+import axios from 'axios';
+import './App.css';
 
-//imported functions from components(route 0
-import Feeling from '../Feeling/Feeling.jsx';
-// import Understanding from '../Understanding/Understanding.jsx';
-// import Support from '../Support/Support.jsx';
-// import Comment from '../Comment/Comment.jsx';
-// import Review from '../Review/Review.jsx';
-// import Submitted from '../Submitted/Submitted.jsx';
+import Feeling from '../Feeling/Feeling';
+import Understanding from '../Understanding/Understanding';
+import Supported from '../Supported/Supported';
+import Comment from '../Comment/Comment';
+import Review from '../Review/Review';
+import Submitted from '../Submitted/Submitted';
 
-function App() {
 
+function App () {
+  
   return (
-    <div className='App'>
+    <div>
+      <header className="bg-blue-400 text-center py-6 text-3xl m-4">
+        <h1 className="text-blue-100 ">Feedback!</h1>
+        <h4 className="underline">Don't forget it!</h4>
+      </header>
+
       <Router>
-        <header className='App-header'>
-          <h1 className='App-title'>Feedback!</h1>
-          <h4>Don't forget it!</h4>
-        </header>
-
-
         <Route exact path="/">
-          <Feeling />
+        <Feeling />
         </Route>
-        {/* <Route exact path="/understanding">
+
+        <Route exact path="/understanding">
           <Understanding />
         </Route>
-        <Route exact path="/support">
-          <Support />
+
+        <Route exact path="/supported">
+          <Supported />
         </Route>
+
         <Route exact path="/comment">
           <Comment />
         </Route>
+
         <Route exact path="/review">
           <Review />
         </Route>
+
         <Route exact path="/submitted">
           <Submitted />
         </Route>
-      </Router> */}
 
-    </div>
+    </Router>
+  </div>
   );
-}
 
+
+}
 
 export default App;
