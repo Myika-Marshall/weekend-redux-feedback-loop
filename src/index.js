@@ -8,9 +8,10 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 
+
 const feelingReducer = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_FEELING':
+        case 'SET_FEELING':
             return {...state, feeling: action.payload};
             default:
                 return state;
@@ -18,7 +19,7 @@ const feelingReducer = (state = [], action) => {
 
 const understandingReducer = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_UNDERSTANDING':
+        case 'SET_UNDERSTANDING':
             return  {...state, understanding: action.payload};
             default:
                 return state;
@@ -27,7 +28,7 @@ const understandingReducer = (state = [], action) => {
 
 const supportReducer = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_SUPPORT':
+        case 'SET_SUPPORTED':
             return {...state, support: action.payload};
             default:
                 return state;
@@ -36,7 +37,7 @@ const supportReducer = (state = [], action) => {
 
 const commentReducer = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_COMMENT':
+        case 'SET_COMMENT':
             return {...state, comment:action.payload};
             default:
                 return state;

@@ -9,22 +9,20 @@ function Review (){
     const dispatch = useDispatch();
     
 // Reducers
+
+
     const feeling = useSelector((store)=> store.feelingReducer);
     const understanding = useSelector((store)=> store.understandingReducer);
     const support = useSelector((store)=> store.supportReducer);
     const comment = useSelector((store)=> store.commentReducer);
-
+    const feedback = [feeling, understanding, support, comment];
+    
     const submittedFeedback = () => {
         console.log('Submitting Feedback:', feeling)
         axios ({
             method: 'POST',
-            url: 'api/feedback',
-            data: {
-            feeling: feeling,
-            understanding: understanding,
-            support: support,
-            comment: comment 
-            },
+            url: '/feedback',
+            data: feedback
         }).then ((response)=> {
             console.log('in submitted feedback review', response);
         }).catch((error)=>{
@@ -37,7 +35,7 @@ function Review (){
             <h2>Review Your Feedback</h2>
                 <p>Feeling: {feeling.feeling}</p>
                 <p>Understanding: {understanding.understanding}</p>
-                <p>Support: {support.supported}</p>
+                <p>Support: {support.support}</p>
                 <p>Comments: {comment.comment}</p>
             <button onClick= {submittedFeedback}>Submit!</button>
         </div>
