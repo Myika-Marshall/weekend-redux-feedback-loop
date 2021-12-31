@@ -2,37 +2,47 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-router.post('/', (req, res) => {
-    const feedback = req.body;
-    const sqlText = 
-        `
-            INSERT INTO feedback (feeling, understanding, support, comments )
-            VALUES ( $1, $2, $3, $4)
-        `;
-    pool.query(sqlText, [ feedback.feeling, feedback.understanding, feedback.supported, feedback.comment ])
-    .then((result) => {
-        console.log(`The following POST is being sent to the db:`, result);
-        res.sendStatus(201);
-    })
-    .catch((error) => {
-        console.log('Post sql error', error);
-        res.sendStatus(500);
-    })
-})
-
+// Gets feedback from the db
 router.get('/', (req, res) => {
-    let sqlText = `
-        SELECT feeling, understanding, support, comments,
-        FROM "feedback" `;
+    console.log('in GET /feedback');
+    const sqlText = `
+        SELECT * FROM "feedback"
+        ORDER BY "id" ASC;
+    `;
     pool.query(sqlText)
-    .then(result => {
-        console.log('in GET data from DB', result);
-        res.send(result.rows);
-    })
-    .catch(error => {
-        console.log('GET Database error', error);
-        res.sendStatus(500);
-    });
+        .then((dbRes) => {
+            res.send(dbRes.rows);
+        }).catch((err) => {
+            console.error('error GET /feedback', err);
+            res.sendStatus(500);
+        });
 });
 
-module.exports = router ;
+// adds new feedback to the database
+router.post('/', (req, res) => {
+    console.log('POST /feedback', req.body);
+    const feedback = req.body;
+    const sqlText = `
+            INSERT INTO "feedback"
+                ("feeling", "understanding", "support", "comments")
+            VALUES
+                ($1, $2, $3, $4)
+        `;
+    const sqlValues = [
+        feedback.feeling,
+        feedback.understanding,
+        feedback.support,
+        feedback.comments
+    ];
+    console.log(sqlValues);
+    pool.query(sqlText, sqlValues)
+        .then((res) => {
+            res.sendStatus(201);
+        }).catch((dbErr) => {
+            console.error(dbErr);
+            res.sendStatus(500);
+        });
+
+});
+
+module.exports = router;

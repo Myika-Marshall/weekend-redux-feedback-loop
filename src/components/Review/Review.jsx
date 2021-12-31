@@ -2,11 +2,9 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import axios from 'axios'
 import {useHistory} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
 
 function Review (){
     const history = useHistory();
-    const dispatch = useDispatch();
     
 // Reducers
 
@@ -15,14 +13,20 @@ function Review (){
     const understanding = useSelector((store)=> store.understandingReducer);
     const support = useSelector((store)=> store.supportReducer);
     const comment = useSelector((store)=> store.commentReducer);
-    const feedback = [feeling, understanding, support, comment];
+    
+    // const feedback = 
     
     const submittedFeedback = () => {
         console.log('Submitting Feedback:', feeling)
         axios ({
             method: 'POST',
             url: '/feedback',
-            data: feedback
+            data: {
+                feeling: feeling.feeling, 
+                understanding: understanding.understanding, 
+                support: support.support, 
+                comment: comment.comment
+            }
         }).then ((response)=> {
             console.log('in submitted feedback review', response);
         }).catch((error)=>{
