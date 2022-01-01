@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     pool.query(sqlText)
         .then((dbRes) => {
             res.send(dbRes.rows);
-        }).catch((err) => {
+        }).catch((dbErr) => {
             console.error('error GET /feedback', err);
             res.sendStatus(500);
         });
@@ -32,12 +32,13 @@ router.post('/', (req, res) => {
         feedback.feeling,
         feedback.understanding,
         feedback.support,
-        feedback.comments
+        feedback.comment
     ];
     console.log(sqlValues);
     pool.query(sqlText, sqlValues)
-        .then((res) => {
-            res.sendStatus(201);
+    .then((dbResult) => {
+        console.log('\tINSERT succeeded.');
+        res.sendStatus(201);
         }).catch((dbErr) => {
             console.error(dbErr);
             res.sendStatus(500);

@@ -38,7 +38,7 @@ const supportReducer = (state = [], action) => {
 const commentReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_COMMENT':
-            return {...state, comment:action.payload};
+            return {...state, comments:action.payload};
             default:
                 return state;
     }

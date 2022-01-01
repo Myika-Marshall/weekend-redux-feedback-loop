@@ -6,13 +6,13 @@ import { useDispatch } from 'react-redux'
 function Comment () {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [comment, setComment]= useState('');
+    const [comments, setComments]= useState('');
 
     const handleComment = () => {
-        console.log('in comment:', comment);
+        console.log('in comment:', comments);
         dispatch({
                 type: 'SET_COMMENT',
-                payload: comment
+                payload: comments
             })
             history.push('/review');
         }
@@ -22,9 +22,9 @@ function Comment () {
             <p>Comments: </p>
             <input 
             type='text'
-            value= {comment}
+            value= {comments}
             placeholder='Please share any comments you might have here!'
-            onChange={(event)=>{setComment(event.target.value)}}/>
+            onChange={(event)=>{setComments(event.target.value)}}/>
             <button onClick={handleComment}>Next</button>
         </div>
     
